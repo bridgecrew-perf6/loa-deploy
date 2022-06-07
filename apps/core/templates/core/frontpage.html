@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Welcome | {% endblock %}
+
+{% block content %}
+    <div class="columns is-multiline mb-6">
+        <div class="column is-12 has-text-centered mt-6 mb-6">
+            <h2 class="is-size-3">
+                Newest prodcuts
+            </h2>
+        </div>
+        {% for product in newest_products %}
+            {% include 'product/parts/list_item.html' %}
+        {% endfor %}
+
+       
+    </div> 
+
+     <div class="column is-12 has-text-centered mt-6 mb-6">
+            <h2 class="is-size-3">
+                Categories
+            </h2>
+        </div>
+
+        {% for category in menu_categories %}
+
+            <a href="{% url 'category' category.slug %}" class="button is-dark mb-4 mr-3"> {{ category.title }}</a> 
+                
+        {% endfor %}
+    
+{% endblock %}
