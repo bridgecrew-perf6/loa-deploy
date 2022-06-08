@@ -16,7 +16,6 @@
     <h2 class="is-size-3 mb-4">My prodcuts</h2>
 
     <a href="{% url 'add_product' %}" class="button is-dark is-uppercase mb-6">Add product</a>
-
     {% if products %}
         <table class="table is-fullwidth">
             <thead>
@@ -30,7 +29,7 @@
                 {% for product in products %}
                     <tr>
                         <td> <a href="{% url 'product' product.category.slug product.slug %}"> {{ product.title }}</a></td>
-                        <td>${{ product.price }}</td>
+                        <td> ${{ product.price }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
@@ -56,33 +55,23 @@
                             <b>Address:</b> {{ order.address }}<br>
                             <b>Zip:</b> {{ order.zipcode }} <br>
                             <b>E-mail:</b> {{ order.email }}<br>
-                            <b>Phone:</b> {{ order.phone }}
-    
-                            <table class="table is-fullwidth mt-4">
-                                <thead>
-                                    <tr>
-                                        <th>Title</th>
-                                        <th>Price</th>
-                                        <th>Quantity</th>
-                                        <th>Paid</th>
-                                        <th>Total</th>
-                                    </tr>
-                                </thead>
-    
-                                <tbody>
+                            <b>Phone:</b> {{ order.phone }} <br>
+                            
+
+                            
+
+                                    
                                     {% for item in order.items.all %}
                                         {% if item.vendor == request.user.vendor %}
-                                            <tr>
-                                                <td>{{ item.product.title }}</td>
-                                                <td>${{ item.product.price }}</td>
-                                                <td>{{ item.quantity }}</td>
-                                                <td>{{ item.vendor_paid|yesno:"Yes,No" }}</td>
-                                                <td>${{ item.get_total_price }}</td>
-                                            </tr>
+                                        <hr>
+                                            <h3 class="is-size-4">{{ item.product.title }}</h3>
+                                           <b>Price :</b>  ${{ item.product.price }} <br>
+                                           <b>Quantity :</b>  {{ item.quantity }} <br>
+                                            <b>Total :</b>  ${{ item.get_total_price }}
+
                                         {% endif %}
                                     {% endfor %}
-                                </tbody>
-                            </table>
+
                         </div>
                     </div>
                 </div>
