@@ -12,7 +12,7 @@
 		<div class="project">
 			<div class="shop">
                 {% for item in cart %}
-				<div class="rox">
+				<div class="box">
                         <img src="{{ item.product.get_thumbnail }}">
 					<div class="content">
 						<h3><a href="{% url 'product' item.product.category.slug item.product.slug %}">{{ item.product.title }}</a></h3>
