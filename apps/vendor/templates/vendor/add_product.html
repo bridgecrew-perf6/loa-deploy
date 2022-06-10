@@ -3,20 +3,19 @@
 {% block title %}Add product | {% endblock %}
 
 {% block content %}
-<h1 class="title">Add product</h1>
+    <h1 class="title mt-6">Add product</h1>
 
-<form action="." method="post" enctype="multipart/form-data">
-    {% csrf_token %}
+    <h2 class="subtitle notification is-danger">Please Note: To maintain the quality of images only PNG files are accepted and displayed</h2>
 
-    {{ form.as_p }}
+    <form method="post" action="." enctype="multipart/form-data">
+        {% csrf_token %}
 
-    <div class="field">
-        <div class="control">
-            <button class="button is-dark is-uppercase"> Submit </button>
+        {{ form.as_p }}
+
+        <div class="field">
+            <div class="control">
+                <button class="button is-dark is-uppercase">Submit</button>
+            </div>
         </div>
-    </div>
-</form>
-
-
-
+    </form>
 {% endblock %}

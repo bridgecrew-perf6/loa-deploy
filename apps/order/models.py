@@ -8,15 +8,15 @@ class Order(models.Model):
     last_name = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
-    zipcode = models.CharField(max_length=100)
     phone = models.CharField(max_length=100)
+    zipcode = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
-    cost = models.DecimalField(max_digits=8, decimal_places=2)
+    cost = models.DecimalField(max_digits=9, decimal_places=2)
     vendors = models.ManyToManyField(Vendor, related_name='orders')
 
     class Meta:
         ordering = ['-created_at']
-
+    
     def __str__(self):
         return self.first_name
 
@@ -27,15 +27,9 @@ class OrderItem(models.Model):
     vendor_paid = models.BooleanField(default=False)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     quantity = models.IntegerField(default=1)
-
+    
     def __str__(self):
         return '%s' % self.id
-
+    
     def get_total_price(self):
         return self.price * self.quantity
-
-
-
-
-
-

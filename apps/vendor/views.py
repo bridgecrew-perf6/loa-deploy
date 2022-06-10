@@ -7,10 +7,23 @@ from django.utils.text import slugify
 from django.shortcuts import get_object_or_404, redirect, render
 
 
+from .forms import VendorForm
+from .models import Info
 from .models import Vendor
 from apps.product.models import Product
 
 from .forms import ProductForm
+
+def info_vendor(request):
+    if request.method == 'POST':
+        form = VendorForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('become_vendor')
+    else:
+        form = VendorForm()
+    return render(request, 'vendor/info_vendor.html', {'form' : VendorForm})
+
 
 
 def become_vendor(request):
@@ -24,8 +37,8 @@ def become_vendor(request):
 
             vendor = Vendor.objects.create(name=user.username, created_by=user)
 
-            return redirect('frontpage')
-    
+            return redirect('vendor_admin')
+
     else:
         form = UserCreationForm()
     return render(request, 'vendor/become_vendor.html', {'form': form})
@@ -47,6 +60,13 @@ def vendor_admin(request):
         #         order.vendor_paid_amount += item.get_total_price()
 
     return render(request, 'vendor/vendor_admin.html', {'vendor': vendor, 'products': products, 'orders':orders })
+
+@login_required
+def delete_product(request, product_id):
+    product = Product.objects.get(pk=product_id)
+    product.delete()
+
+    return redirect('vendor_admin')
 
 @login_required
 def add_product(request):

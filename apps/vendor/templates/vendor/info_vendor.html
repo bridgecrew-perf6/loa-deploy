@@ -1,10 +1,9 @@
 {% extends 'core/base.html' %}
 
-{% block title %}Create Account | {% endblock %}
+{% block title %}Information Form | {% endblock %}
 
 {% block content %}
-
-    <h1 class="title mt-6">Create Account</h1>
+    <h1 class="title mt-6">Information Form</h1>
 
     <form method="post" action=".">
         {% csrf_token %}
@@ -12,13 +11,12 @@
         {{ form.as_p }}
         
 
-
     
 
-
+<br>
         <div class="field">
             <div class="control">
-                <button class="button is-dark is-uppercase">Sign up</button>
+                <button class="button is-dark is-uppercase">Next</button>
             </div>
         </div>
     </form>

@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'some random_default_string')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', False)
+DEBUG = os.environ.get('DEBUG', True)
 
 ALLOWED_HOSTS = []
 
@@ -38,13 +38,13 @@ LOGOUT_REDIRECT_URL = 'frontpage'
 SESSION_COOKIE_AGE = 86400
 CART_SESSION_ID = 'cart'
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_USE_TLS = True
-# EMAIL_PORT = 587
-# EMAIL_HOST_USER = 'landofartxyz@gmail.com'
-# EMAIL_HOST_PASSWORD = 'ztbtlpfxhidllybp'
-# DEFAULT_EMAIL_FROM = 'landofartxyz@gmail.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'landofartxyz@gmail.com'
+EMAIL_HOST_PASSWORD = 'ztbtlpfxhidllybp'
+DEFAULT_EMAIL_FROM = 'landofartxyz@gmail.com'
 
 
 # Application definition
@@ -148,6 +148,9 @@ STATICFILES_DIRS = [
 ]
 MEDIA_URL =  'media/'
 MEDIA_ROOT = BASE_DIR / 'media/'
+
+
+STATIC_ROOT = '/var/www/landofart/static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
