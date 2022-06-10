@@ -1,4 +1,3 @@
-from distutils.log import info
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
@@ -21,7 +20,7 @@ def notify_vendor(order):
     from_email = settings.DEFAULT_EMAIL_FROM
 
     for vendor in order.vendors.all():
-        to_email = info.email
+        to_email = vendor.created_by.email
         subject = 'New order'
         text_content = 'You have a new order!'
         html_content = render_to_string('order/email_notify_vendor.html', {'order': order, 'vendor': vendor})

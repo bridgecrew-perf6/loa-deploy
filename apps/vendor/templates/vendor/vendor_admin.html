@@ -6,10 +6,15 @@
 
     <div class="box">
         <h1 class="title mt-3">Vendor admin - {{ vendor.name }}</h1>
-
+         <a href="{% url 'edit_vendor' %}" class="button is-info is-uppercase">Get Verified</a>
+          
         
         <a href="{% url 'logout' %}" class="button is-danger is-uppercase">Log out</a>
+
+        <h2 class="subtitle is-danger">Get Verified for order notifications!!</h2>
     </div>
+
+    
 
     <div class="box">
         <h2 class="is-size-3 mb-4">My products</h2>

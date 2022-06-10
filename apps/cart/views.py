@@ -11,7 +11,7 @@ from .form import CheckoutForm
 
 
 from apps.order.utilities import checkout
-# , notify_customer, notify_vendor
+from apps.order.utilities import notify_customer, notify_vendor
 
 def cart_detail(request):
     cart = Cart(request)
@@ -32,10 +32,10 @@ def cart_detail(request):
 
            cart.clear()
 
-        #    notify_customer(order)
-        #    notify_vendor(order)
+        notify_customer(order)
+        notify_vendor(order)
 
-           return redirect('success') 
+        return redirect('success') 
 
     else:
         form = CheckoutForm()
