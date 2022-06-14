@@ -9,7 +9,7 @@ class Order(models.Model):
     email = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
     phone = models.CharField(max_length=100)
-    zipcode = models.CharField(max_length=100)
+    zipcode = models.CharField(max_length=100, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     cost = models.DecimalField(max_digits=9, decimal_places=2, null=True)
     vendors = models.ManyToManyField(Vendor, related_name='orders')
